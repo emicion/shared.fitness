@@ -8,16 +8,12 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class Test_Mobile_View_Manual_Entry extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function test_mobile_submission()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('Laravel');
+            $browser->visit('/user_form')
+                    ->assertChecked($agrees_to_terms)
+                    ->press('Submit')
         });
     }
 }

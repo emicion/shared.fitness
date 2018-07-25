@@ -8,11 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class Test_Mobile_View_Login_Page extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
+
     public function test_mobile_login()
     {
         $this->browse(function (Browser $browser) {
