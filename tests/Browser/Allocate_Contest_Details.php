@@ -8,16 +8,14 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class Allocate_Contest_Details extends DuskTestCase
 {
-    /**
-     * A Dusk test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    public function test_edit_admin_settings_successfully()
     {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('Laravel');
+        $this->browse(function ($browser) {
+
+            $browser->visit('/contests/1/edit')
+                ->clickLink('Create Event')
+                ->pause(5000)
+                ->assertPathIs('/events/create');
         });
     }
 }

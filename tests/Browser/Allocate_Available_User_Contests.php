@@ -13,11 +13,15 @@ class Allocate_Available_User_Contests extends DuskTestCase
      *
      * @return void
      */
-    public function testExample()
+    public function test_I_can_create_contest_successfully()
     {
-        $this->browse(function (Browser $browser) {
-            $browser->visit('/')
-                    ->assertSee('Laravel');
+        $this->browse(function ($browser) {
+
+            $browser->visit('/contests/create')
+                ->type('title', 'My Contest')
+                ->press('Add Contest')
+                ->pause(5000)
+                ->assertPathIs('/contests');
         });
     }
 }
