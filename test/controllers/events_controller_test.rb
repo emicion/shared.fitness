@@ -5,6 +5,11 @@ class EventsControllerTest < ActionDispatch::IntegrationTest
     @event = events(:one)
   end
 
+  test "should not be able to save event w/o name"
+    event = Event.new
+    assert_not event.save
+  end
+
   test "should get index" do
     get events_url
     assert_response :success

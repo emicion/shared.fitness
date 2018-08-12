@@ -5,6 +5,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
   end
 
+  test "should not be able to save without username"
+    user = User.new
+    asert_not user.save
+  end
+
   test "should get index" do
     get users_url
     assert_response :success

@@ -5,6 +5,12 @@ class ContestsControllerTest < ActionDispatch::IntegrationTest
     @contest = contests(:one)
   end
 
+
+  test "should not be able to save without name"
+    contest = Contest.new
+    assert_not contest.save
+  end
+
   test "should get index" do
     get contests_url
     assert_response :success
