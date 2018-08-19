@@ -8,6 +8,8 @@
 /.bundle
 /path*
 
+/config/database.yml
+
 /vendor/*
 /bootstrap/*
 /.idea/*
