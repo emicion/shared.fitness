@@ -3,3 +3,6 @@ bundle install
 
 #any time you make a new database migration, you have to run this to instantiate the tables.
 rake db:migrate
+
+# to start the server and be able to access it remotely
+rails s -b 0.0.0.0 -p 300x
