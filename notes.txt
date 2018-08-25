@@ -1,0 +1,5 @@
+#any time there we add a new gem, you have to run this to import it
+bundle install
+
+#any time you make a new database migration, you have to run this to instantiate the tables.
+rake db:migrate
