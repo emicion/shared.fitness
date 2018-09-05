@@ -23,11 +23,20 @@ User.create!( [
 Competition.create!( [
   {  name: "Dave's Competition",
      owner_id: 1,
+     start: Time.now,
+     stop:  Time.now + 2.months,
+     public: false,
      :users => User.where(:f_name => ["Nick", "Nate"]) },
   {  name: "Nick's Competition",
      owner_id: 2,
+     start: Time.now,
+     stop:  Time.now + 2.months,
+     public: true,
      :users => User.where(:f_name => ["Dave", "Nate"]) },
   {  name: "Nate's Competition",
      owner_id: 3,
+     start: Time.now - 2.months,
+     stop:  Time.now,
+     public: true,
      :users => User.where(:f_name => ["Dave", "Nick", "Nate"]) } ] )
 
