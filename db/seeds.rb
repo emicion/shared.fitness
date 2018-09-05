@@ -5,8 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!([
-  { f_name: "David", 
+User.create!( [
+  { f_name: "Dave", 
     l_name: "Henderson",
     email: "dahenderson@csumb.edu", 
     password: "foobar" },
@@ -18,4 +18,16 @@ User.create!([
     l_name: "Mauga",
     email: "nmauga@csumb.edu ",
     password: "foobar" } ] )
+
+#<Competition id: nil, owner_id: nil, name: nil, public: nil, start: nil, stop: nil, created_at: nil, updated_at: nil> 
+Competition.create!( [
+  {  name: "Dave's Competition",
+     owner_id: 1,
+     :users => User.where(:f_name => ["Nick", "Nate"]) },
+  {  name: "Nick's Competition",
+     owner_id: 2,
+     :users => User.where(:f_name => ["Dave", "Nate"]) },
+  {  name: "Nate's Competition",
+     owner_id: 3,
+     :users => User.where(:f_name => ["Dave", "Nick", "Nate"]) } ] )
 
