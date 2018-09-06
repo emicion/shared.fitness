@@ -39,8 +39,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Gems added by the team
 gem 'bootstrap'
 gem 'jquery-rails'
-gem  'devise'
+gem 'devise'
 gem 'jquery-ui-rails'
+gem 'slim'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
