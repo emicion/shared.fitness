@@ -1,4 +1,5 @@
 <%= form_with(model: competition, local: true) do |form| %>
+
   <% if competition.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
@@ -11,32 +12,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :owner_id %>
-    <%= form.text_field :owner_id %>
+
+
+  <div class="form-group">
+    <%= form.label :name, class: "text-primary" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :public, class: "text-primary" %>
+    <%= form.check_box :public, class: "form-check" %>
   </div>
 
-  <div class="field">
-    <%= form.label :public %>
-    <%= form.check_box :public %>
+  <div class="form-group">
+    <%= form.label :start, class: "text-primary" %>
+    <%= form.text_field :start, class: "hasDatepicker" %>
   </div>
 
-  <div class="field">
-    <%= form.label :start %>
-    <%= form.datetime_select :start %>
-  </div>
-
-  <div class="field">
-    <%= form.label :stop %>
-    <%= form.datetime_select :stop %>
+  <div class="form-group">
+    <%= form.label :stop, class: "text-primary" %>
+    <%= form.text_field :stop, class: "form-control hasDatepicker" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit  class: "btn btn-primary" %>
   </div>
+	<script type="text/javascript">
+	$( function() {
+		$( "#datepicker" ).datepicker();
+	} );
+	</script>
+	
 <% end %>
