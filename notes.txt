@@ -6,3 +6,6 @@ rake db:migrate
 
 # to start the server and be able to access it remotely
 rails s -b 0.0.0.0 -p 300x
+
+# to precompile the assets in production
+RAILS_ENV=production rails assets:precompile
