@@ -1,11 +1,16 @@
 class CompetitionsController < ApplicationController
   before_action :set_competition, only: [:show, :edit, :update, :destroy]
+  before_action :check_permissions, only: [:edit, :update]
 
   # GET /competitions
   # GET /competitions.json
   def index
     #@competitions = Competition.joins(:users).where(user: current_user).or(Competition.where(owner: current_user))
-    @competitions = current_user.comps + current_user.competitions
+    if current_user.try(:admin)
+      @competitions = Competition.all
+    else
+      @competitions = current_user.comps + (current_user.competitions - current_user.comps)
+    end
     #@competitions = Competition.all
   end
 
@@ -70,6 +75,13 @@ class CompetitionsController < ApplicationController
     def set_competition
       @competition = Competition.find(params[:id])
     end
+
+    def check_permissions
+      unless current_user.try(:admin) || @competition.owner == current_user
+        redirect_to root_path, alert: "You don't have permission to edit that"
+      end
+    end
+
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def competition_params

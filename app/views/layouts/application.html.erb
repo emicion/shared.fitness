@@ -37,6 +37,9 @@
             <a class="nav-link text-uppercase text-expanded" href="about.html">About</a>
           </li>
           <% if user_signed_in? %>
+            <% if current_user.admin %>
+              <%= nav_link "Users", users_path %>
+            <% end %>
             <%= nav_link "My Competitions", competitions_path %>
             <%= nav_link "My Events", events_path %>
             <li csass="nav-item px-lg-4">
@@ -50,6 +53,12 @@
 
   <section class="page-section clearfix">
     <div class="container">
+      <% if notice %>
+        <p id="notice" class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p id="alert" class="alert alert-danger"><%= alert %></p>
+      <% end %>
     <%= yield %>
     </div>
   </section>
