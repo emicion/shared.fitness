@@ -9,6 +9,7 @@
 /path*
 
 config/database.yml
+config/master.key
 
 /vendor/*
 /bootstrap/*
