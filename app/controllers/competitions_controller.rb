@@ -24,6 +24,8 @@ class CompetitionsController < ApplicationController
   # POST /competitions
   # POST /competitions.json
   def create
+    params[:competition] ||= {}
+    params[:competition]["owner_id"] = current_user.id
     @competition = Competition.new(competition_params)
 
     respond_to do |format|
