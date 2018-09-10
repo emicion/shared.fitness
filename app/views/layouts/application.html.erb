@@ -59,7 +59,9 @@
       <% if alert %>
         <p id="alert" class="alert alert-danger"><%= alert %></p>
       <% end %>
-    <%= yield %>
+      <div class="well">
+      <%= yield %>
+      </div>
     </div>
   </section>
   </body>
