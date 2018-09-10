@@ -9,15 +9,22 @@ User.create!( [
   { f_name: "Dave", 
     l_name: "Henderson",
     email: "dahenderson@csumb.edu", 
-    password: "foobar" },
+    password: "foobar", 
+    admin: true},
   { f_name: "Nick",
     l_name: "Nelson",
     email: "nnelson@csumb.edu ",
-    password: "foobar" },
+    password: "foobar",
+    admin: true},
   { f_name: "Nate",
     l_name: "Mauga",
     email: "nmauga@csumb.edu ",
-    password: "foobar" } ] )
+    password: "foobar", 
+    admin: true},
+  { f_name: "Mr.",
+    l_name: "Universe",
+    email:  "admin@shared.fitness",
+    password: "foobar"} ] )
 
 #<Competition id: nil, owner_id: nil, name: nil, public: nil, start: nil, stop: nil, created_at: nil, updated_at: nil> 
 Competition.create!( [

@@ -8,7 +8,7 @@
 /.bundle
 /path*
 
-/config/database.yml
+config/database.yml
 
 /vendor/*
 /bootstrap/*
