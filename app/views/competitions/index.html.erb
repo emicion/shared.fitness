@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+<p id="notice" class="alert alert-success"><%= notice %></p>
+<%end %>
 
 <h1 class="site-heading-upper text-primary">Competitions</h1>
 
@@ -24,7 +26,11 @@
         <td><%= competition.start.to_date %></td>
         <td><%= competition.stop.to_date %></td>
         <td><%= link_to 'Show', competition %></td>
-        <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
+        <% if current_user == competition.owner %>
+          <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
+        <% else %>
+          <td> &nbsp; </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

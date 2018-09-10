@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :challenges
       resources :competitions
       root 'competitions#index'
+      resources :users
     end
     unauthenticated do
       root 'devise/sessions#new', as: :unauthenticated_root

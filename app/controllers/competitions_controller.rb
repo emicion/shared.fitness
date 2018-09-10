@@ -4,7 +4,9 @@ class CompetitionsController < ApplicationController
   # GET /competitions
   # GET /competitions.json
   def index
-    @competitions = Competition.all
+    #@competitions = Competition.joins(:users).where(user: current_user).or(Competition.where(owner: current_user))
+    @competitions = current_user.comps + current_user.competitions
+    #@competitions = Competition.all
   end
 
   # GET /competitions/1
