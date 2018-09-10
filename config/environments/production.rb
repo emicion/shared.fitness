@@ -66,8 +66,8 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'shared.fitness' }
   config.action_mailer.perform_caching = false
   ActionMailer::Base.smtp_settings = {
-    :user_name => Credential.send_grid_username,
-    :password => Credential.send_grid_password,
+    :user_name => Rails.application.credentials.mail[:send_grid_username],
+    :password => Rails.application.credentials.mail[:send_grid_password],
     :domain => 'shared.fitness',
     :address => 'smtp.sendgrid.net',
     :port => 587,
