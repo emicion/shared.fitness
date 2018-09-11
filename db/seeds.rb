@@ -28,6 +28,11 @@ User.create!( [
     email:  "admin@shared.fitness",
     password: "foobar"} ] )
 
+User.all.each do |user|
+  user.confirmed_at = DateTime.now
+  user.save!
+end
+
 #<Competition id: nil, owner_id: nil, name: nil, public: nil, start: nil, stop: nil, created_at: nil, updated_at: nil> 
 Competition.create!( [
   {  name: "Dave's Competition",
