@@ -1,4 +1,9 @@
 .well{
-    background-color: rgba(47, 6, 252, 0.523); // I don't know the .well color, so I used white as example
-    padding: 5px 5px 5px 5px;
-    }
+  background-color: rgba(47, 6, 252, 0.523); // I don't know the .well color, so I used white as example
+  padding: 5px 5px 5px 5px;
+}
+.center-block {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
