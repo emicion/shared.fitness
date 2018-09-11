@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/pages/:page" => "pages#show"
   devise_for :users, :controllers => { registrations: 'registrations' }
   devise_scope :user do
     authenticate :user do
