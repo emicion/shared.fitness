@@ -42,10 +42,12 @@
             <% end %>
             <%= nav_link "My Competitions", competitions_path %>
             <%= nav_link "My Events", events_path %>
-            <li csass="nav-item px-lg-4">
+            <li class="nav-item px-lg-4">
               <%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "nav-link text-uppercase text-expanded" %>
             </li>
-          <%end%>
+          <% else %>
+            <li class="nav-item px-lg-p"><%= link_to 'Login', '/users/sign_in', :class => "nav-link text-uppercase text-expanded" %></li>
+          <% end %>
         </ul>
       </div>
     </div>
