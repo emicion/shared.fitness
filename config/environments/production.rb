@@ -63,9 +63,10 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "shared_fitness_#{Rails.env}"
 
-  config.action_mailer.default_url_options = { :host => 'shared.fitness' }
+  config.action_mailer.default_url_options = { :host => 'http://shared.fitness' }
   config.action_mailer.perform_caching = false
   ActionMailer::Base.smtp_settings = {
+    :host => 'shared.fitness',
     :user_name => Rails.application.credentials.mail[:send_grid_username],
     :password => Rails.application.credentials.mail[:send_grid_password],
     :domain => 'shared.fitness',
