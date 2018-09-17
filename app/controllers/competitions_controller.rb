@@ -5,14 +5,21 @@ class CompetitionsController < ApplicationController
   # GET /competitions
   # GET /competitions.json
   def index
-    #@competitions = Competition.joins(:users).where(user: current_user).or(Competition.where(owner: current_user))
-    if current_user.try(:admin)
-      @competitions = Competition.all
-    else
-      @competitions = current_user.comps + (current_user.competitions - current_user.comps)
-    end
-    #@competitions = Competition.all
+    term = params[:term]
+      if term
+        if current_user.try(:admin)
+          competitions = Competition.where('name LIKE ?', params[:term]).order('id DESC')
+          competitions = Competition.all.order('id DESC') if term.downcase == 'all'
+        else
+          competitions = Competition.anyone.where('name LIKE ?', params[:term]).order('id DESC')
+          competitions = Competition.anyone.order('id DESC') if term.downcase == 'all'
+        end
+      else
+        competitions = current_user.comps + (current_user.competitions - current_user.comps)
+      end
+    @competitions = competitions.paginate(page: params[:page], per_page: 10)
   end
+
 
   # GET /competitions/1
   # GET /competitions/1.json
