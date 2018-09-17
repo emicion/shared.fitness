@@ -9,10 +9,10 @@ class CompetitionsController < ApplicationController
       if term
         if current_user.try(:admin)
           competitions = Competition.where('name LIKE ?', params[:term]).order('id DESC')
-          competitions = Competition.all.order('id DESC') if term.downcase == 'all'
+          competitions = Competition.all.order('id DESC') if params[:term] == ""
         else
           competitions = Competition.anyone.where('name LIKE ?', params[:term]).order('id DESC')
-          competitions = Competition.anyone.order('id DESC') if term.downcase == 'all'
+          competitions = Competition.anyone.order('id DESC') if params[:term] == ""
         end
       else
         competitions = current_user.comps + (current_user.competitions - current_user.comps)
