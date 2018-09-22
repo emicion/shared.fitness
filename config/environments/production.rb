@@ -63,18 +63,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "shared_fitness_#{Rails.env}"
 
-  config.action_mailer.default_url_options = { :host => 'http://shared.fitness' }
   config.action_mailer.perform_caching = false
-  ActionMailer::Base.smtp_settings = {
-    :host => 'shared.fitness',
-    :user_name => Rails.application.credentials.mail[:send_grid_username],
-    :password => Rails.application.credentials.mail[:send_grid_password],
-    :domain => 'shared.fitness',
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
-  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

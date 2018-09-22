@@ -16,7 +16,7 @@ class ChallengesController < ApplicationController
   def new
     @challenge = Challenge.new
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to competitions_url }
       format.js
     end
   end
@@ -32,8 +32,7 @@ class ChallengesController < ApplicationController
 
     respond_to do |format|
       if @challenge.save
-        format.html { redirect_to @challenge, notice: 'Challenge was successfully created.' }
-        format.json { render :show, status: :created, location: @challenge }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @challenge.errors, status: :unprocessable_entity }
@@ -46,8 +45,7 @@ class ChallengesController < ApplicationController
   def update
     respond_to do |format|
       if @challenge.update(challenge_params)
-        format.html { redirect_to @challenge, notice: 'Challenge was successfully updated.' }
-        format.json { render :show, status: :ok, location: @challenge }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @challenge.errors, status: :unprocessable_entity }

@@ -1,3 +1,5 @@
+<% challenge ||= Challenge.new %>
+
 <%= form_with(model: challenge, local: true) do |form| %>
   <% if challenge.errors.any? %>
     <div id="error_explanation">
@@ -11,10 +13,7 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :competition_id %>
-    <%= form.text_field :competition_id %>
-  </div>
+  <%= form.hidden_field :competition_id, :value => 2 %>
 
   <div class="field">
     <%= form.label :name %>

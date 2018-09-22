@@ -2,5 +2,27 @@
 
 <%= render 'form', competition: @competition %>
 
-<%= link_to 'Show', @competition %> |
-<%= link_to 'Back', competitions_path %>
+<%= link_to "New Challenge", new_challenge_path, id: "new_challenge", remote: true %>
+
+<div class="table-responsive-md">
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Value</th>
+      <th scope="col">Per</th>
+      <th scope="col" colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @competition.challenges.each do |challenge| %>
+        <%= render 'challenges/challenge', challenge: challenge %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+
