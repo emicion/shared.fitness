@@ -15,6 +15,10 @@ class ChallengesController < ApplicationController
   # GET /challenges/new
   def new
     @challenge = Challenge.new
+    respond_to do |format|
+      format.html { redirect_to tasks_url }
+      format.js
+    end
   end
 
   # GET /challenges/1/edit
