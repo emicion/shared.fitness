@@ -1,10 +1,11 @@
 body {
   @include body-font;
   //background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('/images/empty-field.jpg');
-  background-image: asset-url("empty-field.jpg");
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
+  // background-image: asset-url("empty-field.jpg");
+  // background-attachment: fixed;
+  // background-position: center;
+  // background-size: cover;
+  background-color: red;
 }
 
 h1,
@@ -25,10 +26,11 @@ p {
 }
 
 .site-heading {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
   text-transform: uppercase;
   line-height: 1;
+  background-color: aqua;
 
   @include heading-font;
   .site-heading-upper {
