@@ -1,11 +1,10 @@
 body {
   @include body-font;
   //background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('/images/empty-field.jpg');
-  // background-image: asset-url("empty-field.jpg");
-  // background-attachment: fixed;
-  // background-position: center;
-  // background-size: cover;
-  background-color: red;
+  background-image: asset-url("empty-field.jpg");
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 
 h1,
@@ -39,7 +38,7 @@ header {
   position: relative;
   background-color: black;
   height: 75vh;
-  max-height: 10rem;
+  max-height: 20rem;
   width: 100%;
   overflow: hidden;
 }
@@ -111,7 +110,7 @@ header .overlay {
   margin-bottom: 0rem;
   text-transform: uppercase;
   line-height: 1;
-  background-color: aqua;
+  background-color: rgba(0,0,0,0.5);
 
   @include heading-font;
   .site-heading-upper {
