@@ -45,6 +45,7 @@ gem 'jquery-ui-rails'
 gem 'slim'
 gem 'will_paginate', '>= 3.1'
 gem 'will_paginate-bootstrap4'
+gem 'pg_search'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,4 +1,12 @@
 class Competition < ApplicationRecord
+  include PgSearch
+
+  pg_search_scope :search_by_name, against: [:name],
+    using: {
+      tsearch: {
+        prefix: true
+      }
+    }
   belongs_to :owner, class_name: 'User', inverse_of: :comps
 
   has_many :challenges
