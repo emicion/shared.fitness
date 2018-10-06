@@ -14,6 +14,7 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/new
   def new
+    @competition = Competition.find params[:competition_id]
     @challenge = Challenge.new
     respond_to do |format|
       format.html { redirect_to competitions_url }
@@ -28,15 +29,11 @@ class ChallengesController < ApplicationController
   # POST /challenges
   # POST /challenges.json
   def create
-    @challenge = Challenge.new(challenge_params)
+    @challenge = Challenge.create!(challenge_params)
 
     respond_to do |format|
-      if @challenge.save
-        format.js
-      else
-        format.html { render :new }
-        format.json { render json: @challenge.errors, status: :unprocessable_entity }
-      end
+      format.html {redirect_to edit_competition_url(params[:challenge][:competition_id]) }
+      format.js
     end
   end
 

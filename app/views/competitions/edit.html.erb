@@ -2,7 +2,7 @@
 
 <%= render 'form', competition: @competition %>
 
-<%= link_to "New Challenge", new_challenge_path, class: "start_new", remote: true %>
+<%= link_to "New Challenge", new_challenge_path(competition_id: @competition), class: "start_new", remote: true %>
 
 <div class="table-responsive-md">
 <table class="table table-dark table-striped">
