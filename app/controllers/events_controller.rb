@@ -14,7 +14,12 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
+    @challenge = Challenge.find params[:challenge_id]
     @event = Event.new
+    respond_to do |format|
+      format.html { redirect_to competitions_url }
+      format.js
+    end
   end
 
   # GET /events/1/edit
@@ -24,16 +29,12 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-
+    challenge = Challenge.find params[:event][:challenge_id]
+    params[:event][:user_id] = current_user.id
+    params[:event][:value] = params[:event][:performed].to_f * challenge.value 
+    @event = Event.create!(event_params)
     respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+      format.html {redirect_to competition_url(challenge.competition.id) }
     end
   end
 

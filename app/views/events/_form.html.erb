@@ -1,37 +1,24 @@
-<%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
+<%= form_with(model: @event, local: true) do |form| %>
+  <% if @event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
       <ul>
-      <% event.errors.full_messages.each do |message| %>
+      <% @event.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%= form.hidden_field :challenge_id, :value => @challenge.id %>
 
   <div class="field">
-    <%= form.label :challenge_id %>
-    <%= form.text_field :challenge_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :performed %>
-    <%= form.text_field :performed %>
-  </div>
-
-  <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value %>
+    <label for "event_performed" class="site-heading-upper text-primary">How many <%= @challenge.per.pluralize %> did you perform?</label>
+    <%= form.text_field :performed, required: true, class: "form-control" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Add Event" %>
   </div>
 <% end %>

@@ -2,4 +2,5 @@
     <td><%= event.challenge.name %></td>
     <td><%= event.performed %></td>
     <td><%= event.value %></td>
+    <td><%= event.created_at.in_time_zone("America/Los_Angeles").strftime("%B %-d, %Y %H:%M") %>
 </tr>

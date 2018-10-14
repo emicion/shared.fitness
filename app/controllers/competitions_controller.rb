@@ -1,5 +1,5 @@
 class CompetitionsController < ApplicationController
-  before_action :set_competition, only: [:show, :edit, :update, :destroy]
+  before_action :set_competition, only: [:edit, :update, :destroy]
   before_action :check_permissions, only: [:edit, :update]
 
   # GET /competitions
@@ -25,6 +25,7 @@ class CompetitionsController < ApplicationController
   # GET /competitions/1
   # GET /competitions/1.json
   def show
+    @competition = Competition.includes(:challenges).find(params[:id])
   end
 
   # GET /competitions/new
@@ -81,7 +82,7 @@ class CompetitionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_competition
-      @competition = Competition.find(params[:id])
+      @competition = Competition.includes(:challenges).find(params[:id])
     end
 
     def check_permissions

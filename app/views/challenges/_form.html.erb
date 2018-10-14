@@ -16,26 +16,30 @@
   <%= form.hidden_field :competition_id, :value => @competition.id %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <label for "event_performed" class="site-heading-upper text-primary">Name</label>
+    <br />
+    <%= form.text_field :name, required: true, class: "form-control" %>
   </div>
-
+  <br />
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+    <label for "event_performed" class="site-heading-upper text-primary">Description</label>
+    <br />
+    <%= form.text_area :description, required: true, class: "form-control" %>
   </div>
-
+  <br />
   <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value %>
+    <label for "event_performed" class="site-heading-upper text-primary">Points awarded for each unit of measure (decimal places ok)</label>
+    <br />
+    <%= form.text_field :value, required: true, class: "form-control" %>
   </div>
-  
+  <br />
   <div class="field">
-    <%= form.label :per %>
-    <%= form.text_field :per %>
+    <label for "event_performed" class="site-heading-upper text-primary">Unit of measure</label>
+    <br />
+    <%= form.text_field :per, required: true, class: "form-control" %>
   </div>
-
+  <br />
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Add Challenge" %>
   </div>
 <% end %>

@@ -1,22 +1,13 @@
 <h1 class="site-heading-upper text-primary text-center"><%= @competition.name %></h1>
-<div class="table-responsive-md">
-<table class="table table-dark table-striped">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Value</th>
-      <th scope="col">Per</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @competition.challenges.each do |challenge| %>
-        <%= render 'challink', challenge: challenge %>
-    <% end %>
-  </tbody>
-</table>
-</div>
+<ul class="list-group">
+  <% @competition.challenges.each do |challenge| %>
+    <% events = challenge.events.where(user_id: current_user.id) %>
+    <% tot_pts = events.inject(0){|x,event| event.value + x} %>
+    <%= render partial: 'challink', locals: {challenge: challenge, total: tot_pts}%>
+  <% end %>
+</ul>
 <br>
-#<Event id: nil, user_id: nil, challenge_id: nil, performed: nil, value: nil, created_at: nil, updated_at: nil>
+
 <div class="table-responsive-md">
 <table class="table table-dark table-striped">
   <thead>
@@ -24,10 +15,11 @@
       <th scope="col">Name</th>
       <th scope="col">Performed</th>
       <th scope="col">Value</th>
+      <th scope="col">Date Entered</th>
     </tr>
   </thead>
   <tbody>
-    <% @competition.events.each do |event| %>
+    <% @competition.events.where(user_id: current_user.id).each do |event| %>
         <%= render 'event', event: event %>
     <% end %>
   </tbody>
