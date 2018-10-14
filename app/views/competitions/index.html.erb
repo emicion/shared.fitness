@@ -22,19 +22,18 @@
       <th scope="col">Public</th>
       <th scope="col">Start</th>
       <th scope="col">Stop</th>
-      <th scope="col" colspan="2"></th>
+      <th scope="col">&nbsp;</th>
     </tr>
   </thead>
 
   <tbody>
     <% @competitions.each do |competition| %>
       <tr scope="row">
-        <td><%= competition.name %></td>
+        <td><%= link_to competition.name, competition %></td>
         <td><%= "#{competition.owner.f_name} #{competition.owner.l_name}" %></td>
         <td><%= competition.public ? "Yes" : "No" %></td>
         <td><%= competition.start.to_date %></td>
         <td><%= competition.stop.to_date %></td>
-        <td><%= link_to 'Show', competition %></td>
         <% if current_user.admin || current_user == competition.owner %>
           <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
         <% else %>
