@@ -1,27 +1,36 @@
-<p>
-  <strong>Owner:</strong>
-  <%= @competition.owner.email %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @competition.name %>
-</p>
-
-<p>
-  <strong>Public:</strong>
-  <%= @competition.public %>
-</p>
-
-<p>
-  <strong>Start:</strong>
-  <%= @competition.start %>
-</p>
-
-<p>
-  <strong>Stop:</strong>
-  <%= @competition.stop %>
-</p>
-
-<%= link_to 'Edit', edit_competition_path(@competition) %> |
-<%= link_to 'Back', competitions_path %>
+<h1 class="site-heading-upper text-primary text-center"><%= @competition.name %></h1>
+<div class="table-responsive-md">
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Value</th>
+      <th scope="col">Per</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @competition.challenges.each do |challenge| %>
+        <%= render 'challink', challenge: challenge %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+#<Event id: nil, user_id: nil, challenge_id: nil, performed: nil, value: nil, created_at: nil, updated_at: nil>
+<div class="table-responsive-md">
+<table class="table table-dark table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Performed</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @competition.events.each do |event| %>
+        <%= render 'event', event: event %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
