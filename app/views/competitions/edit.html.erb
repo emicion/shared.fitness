@@ -1,9 +1,12 @@
+<div class="drop_form">
 <h1 class="site-heading-upper text-primary">Editing Competition</h1>
-
 <%= render 'form', competition: @competition %>
+</div>
 
-<%= link_to "New Challenge", new_challenge_path(competition_id: @competition), class: "start_new", remote: true %>
-
+<br \>
+<%= link_to "Add New Challenge", new_challenge_path(competition_id: @competition), class: "start_new btn btn-info", remote: true %>
+<br \>
+<br \>
 <div class="table-responsive-md">
 <table class="table table-dark table-striped">
   <thead>
