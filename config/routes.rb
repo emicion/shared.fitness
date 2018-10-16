@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :challenges
       resources :competitions
       resources :users
+      get 'join/:id', to: 'competitions#join'
     end
     authenticated :user do
       root 'competitions#index'
