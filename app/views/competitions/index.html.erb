@@ -22,6 +22,7 @@
       <th scope="col">Public</th>
       <th scope="col">Start</th>
       <th scope="col">Stop</th>
+      <th scope="col">Join/Leave</th>
       <th scope="col">&nbsp;</th>
     </tr>
   </thead>
@@ -34,6 +35,9 @@
         <td><%= competition.public ? "Yes" : "No" %></td>
         <td><%= competition.start.to_date %></td>
         <td><%= competition.stop.to_date %></td>
+        <% joinPath = "/join/#{competition.id}" %>
+        <% joinWord = competition.users.exists?(current_user.id) ? "Leave" : "Join" %> 
+        <td><%= link_to joinWord, joinPath%></td>
         <% if current_user.admin || current_user == competition.owner %>
           <td><%= link_to 'Edit', edit_competition_path(competition) %></td>
         <% else %>

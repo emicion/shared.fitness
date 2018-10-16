@@ -21,6 +21,19 @@ class CompetitionsController < ApplicationController
     @competitions = competitions.paginate(page: params[:page], per_page: 10)
   end
 
+  def join
+    curUsr = current_user
+    competition = Competition.find params[:id]
+    if competition.users.exists? curUsr.id
+      competition.users.delete curUsr
+      redirect_to root_path, alert: "You have left #{competition.name}"
+    else
+      competition.users<< curUsr
+      redirect_to root_path, notice: "You have joined #{competition.name}"
+    end
+  end
+
+
 
   # GET /competitions/1
   # GET /competitions/1.json
